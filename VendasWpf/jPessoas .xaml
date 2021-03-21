@@ -1,0 +1,84 @@
+﻿<Window x:Class="VendasWpf.jPessoas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="Tela de manutenção de Produto" Height="500" Width="600"
+ WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="estiloButtom" TargetType="Button">
+            <Setter Property="Background" Value="Beige"></Setter>
+            <Setter Property="FontSize" Value="12"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="Width" Value="100"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="2">
+            <TextBlock Margin="7" Height="23" Text="Digite o ID da Pessoas: "
+FontWeight="Bold"></TextBlock>
+            <TextBox Name="txtPessoasID" Margin="5" Height="23" Width="150"></TextBox>
+            <Button Margin="15" Name="GetPessoa" Content="Localizar pessoa pelo ID"
+ Style="{StaticResource estiloButtom}" Click="GetPessoa_Click_1"></Button>
+        </StackPanel>
+        <TextBlock Margin="7" Grid.Row="1" FontWeight="Bold">Descrição:</TextBlock>
+        <TextBox Name="txtDescricao" Grid.Row="1" Grid.Column="1" Text="{Binding
+Descricao}"/>
+        <TextBlock Margin="7" Grid.Row="2" FontWeight="Bold">Nome:</TextBlock>
+        <TextBox Name="txtNome" Grid.Row="2" Grid.Column="1" Text="{Binding
+Nome}" Margin="0,0,225,0" />
+        <TextBlock Margin="7" Grid.Row="3" FontWeight="Bold">Idade:</TextBlock>
+        <TextBox Name="txtIdade" Grid.Row="3" Grid.Column="1" Text="{Binding
+Idade}" Margin="0,0,295,0" />
+        <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1"
+HorizontalAlignment="Center">
+            <Button Margin="5" Name="btnInserirPessoa" Style="{StaticResource estiloButtom}"
+ Content="Inserir pessoa" Click="btnInserirPessoa_Click"/>
+            <Button Margin="5" Name="btnAtualizarPessoa" Style="{StaticResource
+estiloButtom}"
+ Content="Atualizar pessoa" Click="btnAtualizarPessoa_Click"/>
+            <Button Margin="5" Name="btnExcluirPessoa" Content="Excluir pessoa"
+Style="{StaticResource estiloButtom}"
+ Click="btnExcluirPessoa_Click"/>
+            <Button Margin="7" Name="btnFechar" Content="Fechar" Style="{StaticResource
+estiloButtom}"
+ Click="btnFechar_Click" Height="27" Width="109" />
+        </StackPanel>
+        <GridSplitter Grid.Row="5" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+Height="2"/>
+        <Border Grid.Row="5" Grid.ColumnSpan="2" Padding="3" Margin="5"
+Background="LightSteelBlue" Width="550">
+            <Grid x:Name="gridPessoas">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <DataGrid Name="dataGridPessoa" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="PessoasID" Width="75" Binding="{Binding
+PessoasID}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Descrição" Width="270" Binding="{Binding
+Descricao}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Nome" Width="100"
+Binding="{Binding Nome}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="Idade" Width="100"
+Binding="{Binding Idade}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,47 @@
+﻿<Window x:Class="VendasWpf.jReajustarPreco"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="Reajustar Preco do(s) produto(s)" Height="300" Width="500"
+ WindowStartupLocation="CenterOwner">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="67*" />
+            <RowDefinition Height="68*" />
+            <RowDefinition Height="66*" />
+            <RowDefinition Height="60*" />
+        </Grid.RowDefinitions>
+        <GroupBox Header="Reajustar preço de?" Height="61" HorizontalAlignment="Left"
+Margin="8,6,0,0" Name="ReajPreco" VerticalAlignment="Top" Width="458">
+            <Grid>
+                <RadioButton Content="De um produto" Height="16" HorizontalAlignment="Left"
+Margin="18,14,0,0" Name="radioButton1" VerticalAlignment="Top"
+GroupName="ReajPreco" Checked="radioButton1_Checked" />
+                <RadioButton Content="Todos os produtos" Height="16"
+HorizontalAlignment="Left" Margin="203,16,0,0" Name="radioButton2"
+VerticalAlignment="Top" IsChecked="False" GroupName="ReajPreco"
+Checked="radioButton2_Checked" IsHitTestVisible="True" />
+            </Grid>
+        </GroupBox>
+        <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="12,9,0,0"
+Name="textBlock1" Text="Informe o ID do Produto:" VerticalAlignment="Top" />
+        <ComboBox Grid.Row="1" Height="23" HorizontalAlignment="Left"
+Margin="155,7,0,0" Name="cboProduto" VerticalAlignment="Top" Width="120"
+IsEditable="True" IsEnabled="False" DisplayMemberPath="ProdutoID"
+SelectionChanged="cboProduto_SelectionChanged" />
+        <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Left"
+Margin="311,12,0,0" Name="textBlock2" Text="% de ajuste:" VerticalAlignment="Top" />
+        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="388,10,0,0"
+Name="txtPercentual" VerticalAlignment="Top" Width="78" />
+        <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="13,10,0,0"
+Name="tbxPrecoAtual" Text="Preço atual:" VerticalAlignment="Top" Width="447" />
+        <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="14,40,0,0"
+Name="tbxPrecoReajustado" Text="Preço reajustado: " VerticalAlignment="Top"
+Width="446" />
+        <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="14,42,0,0"
+Name="tbxDescricaoProduto" Text="Descrição do produto:" VerticalAlignment="Top" />
+        <Button Content="Reajustar o(s) preço(s) do(s) produto(s)" Grid.Row="3" Height="33"
+HorizontalAlignment="Left" Margin="79,16,0,0" Name="btnReajustarPreco"
+VerticalAlignment="Top" Width="327" FontWeight="Bold" Click="btnReajustarPreco_Click"
+/>
+    </Grid>
+</Window>

@@ -1,0 +1,87 @@
+﻿<Window x:Class="VendasWpf.jRelVendas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="jRelVendas" Height="300" Width="600" Loaded="Window_Loaded"
+ WindowStartupLocation="CenterOwner">
+    <Window.Resources>
+        <DataTemplate x:Key="lstPedidos">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" >
+                    <TextBlock Text="Pedido ID:" Margin="2"/>
+                    <TextBlock Text="{Binding PedidoID}" Margin="2"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1" >
+                    <TextBlock Text="Data: " Margin="2"/>
+                    <TextBlock Text="{Binding Data}" Margin="2"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="2" >
+                    <TextBlock Text="Valor:" Margin="2"/>
+                    <TextBlock Text="{Binding Valor}" Margin="2"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="3" >
+                    <TextBlock Text="Cliente ID:" Margin="2"/>
+                    <TextBlock Text="{Binding ClienteID}" Margin="2"></TextBlock>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="lstItensPedido">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Row="0" >
+                    <TextBlock Text="Item Num:" Margin="2"/>
+                    <TextBlock Text="{Binding ItemNum}" Margin="2"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="1" >
+                    <TextBlock Text="Quantidade: " Margin="2"/>
+                    <TextBlock Text="{Binding Qtdade}" Margin="2"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="2" >
+                    <TextBlock Text="Preço venda: " Margin="2"/>
+                    <TextBlock Text="{Binding PrecoVenda}" Margin="2"></TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Row="3" >
+                    <TextBlock Text="Produto ID:" Margin="2"/>
+                    <TextBlock Text="{Binding ProdutoID}" Margin="2"></TextBlock>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid Height="263" Width="585">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Height="23" HorizontalAlignment="Left" Margin="14,7,0,0"
+Name="textBlock1"
+ Text="Selecione o cliente:"
+ VerticalAlignment="Top" FontWeight="Bold" />
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="134,4,0,0"
+ Name="cboClientes" VerticalAlignment="Top" Width="120"
+ IsEditable="True" DisplayMemberPath="Nome"
+ SelectionChanged="cboClientes_SelectionChanged" />
+        <ListBox x:Name="listaPedidos" Grid.Row="1" Height="Auto"
+ItemTemplate="{StaticResource lstPedidos}"
+ SelectionChanged="listaPedidos_SelectionChanged" Focusable="False"></ListBox>
+ <GridSplitter Name="gspJanela" Grid.Column="1" HorizontalAlignment="Left"
+ VerticalAlignment="Stretch"
+ Width="2" Background="LightGray"/>
+<ListBox x:Name="listaItensPedido" Grid.Row="1" Grid.Column="1" Height="Auto"
+ ItemTemplate="{StaticResource lstItensPedido}"></ListBox>
+    </Grid>
+</Window>

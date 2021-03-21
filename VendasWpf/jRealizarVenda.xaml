@@ -1,0 +1,99 @@
+﻿<Window x:Class="VendasWpf.jRealizarVenda"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="jRealizarVenda" Height="500" Width="600"
+ WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
+ <Grid Background="LightGoldenrodYellow">
+ <Grid.ColumnDefinitions>
+     <ColumnDefinition Width="202*"/>
+            <ColumnDefinition Width="60*"/>
+            <ColumnDefinition Width="40*"/>
+            <ColumnDefinition Width="73*"/>
+            <ColumnDefinition Width="217*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="36*" />
+            <RowDefinition Height="88*" />
+            <RowDefinition Height="335*" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="17,14,0,0"
+Name="textBlock3" Text="PedidoID:" VerticalAlignment="Top" />
+        <TextBox Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="79,13,0,0"
+Name="txtPedido" VerticalAlignment="Top" Width="120" IsEnabled="False" />
+        <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Left"
+Margin="27,13,0,0" Name="textBlock4" Text="Data:" VerticalAlignment="Top" Grid.Column="1" />
+        <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Left" Margin="17,48,0,0"
+Name="textBlock5" Text="ClienteID:" VerticalAlignment="Top" />
+
+        <RadioButton Content="à vista" Grid.Row="1" Height="16" HorizontalAlignment="Left"
+Margin="105.69,16,0,0" Name="radioButton1" VerticalAlignment="Top" IsChecked="True" Grid.Column="4" />
+        <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Left"
+Margin="19.69,63,0,0" Name="textBlock6" Text="Valor total:" VerticalAlignment="Top"
+FontSize="16" Grid.Column="4" />
+        <TextBlock Grid.Row="1" Height="23" HorizontalAlignment="Left"
+Margin="105.69,65,0,0" Name="tbValorTotal" Text="TextBlock" VerticalAlignment="Top"
+Width="85" Grid.Column="4" />
+
+        <GridSplitter Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center"
+Height="2" Grid.ColumnSpan="5"/>
+
+        <Border Grid.Row="2" Padding="3" Background="Black" Margin="0,13,0,10" Grid.ColumnSpan="5">
+            <TextBlock Height="23" Text="Selecione o produto:" VerticalAlignment="Top" />
+        </Border>
+        <ComboBox Grid.Row="2" Height="23" HorizontalAlignment="Right"
+Margin="0,16,1,0" Name="cboProduto" VerticalAlignment="Top" Width="120"
+DisplayMemberPath="Descricao" IsEditable="True"
+SelectionChanged="cboProduto_SelectionChanged" Grid.ColumnSpan="2" />
+        <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="51,46,0,0"
+Text="Quantidade:" VerticalAlignment="Top" />
+        <TextBox Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="123,45,0,0"
+Name="txtQtdade" VerticalAlignment="Top" Width="59" />
+        <Button Content="Adicionar item a lista" Grid.Row="2" Height="23"
+HorizontalAlignment="Right" Margin="0,47,132,0" Name="btnAdicionarItem"
+VerticalAlignment="Top" Width="119" Click="btnAdicionarItem_Click" Grid.Column="3" Grid.ColumnSpan="2" />
+        <Separator Grid.Row="2" Height="10" HorizontalAlignment="Left" Margin="6,70,0,0"
+Name="separator1" VerticalAlignment="Top" Width="560" Foreground="#FF36DE36" Grid.ColumnSpan="5" />
+        <DataGrid AutoGenerateColumns="False" Grid.Row="2" Height="169"
+HorizontalAlignment="Left" Margin="10,82,0,0" Name="dataItens" VerticalAlignment="Top"
+Width="556" Grid.ColumnSpan="5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nº Item" Binding="{Binding ItemNum}"
+Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Qtdade solicitada" Binding="{Binding Qtdade}"
+Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Preço" Binding="{Binding PrecoVenda}"
+Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="Pedido ID" Binding="{Binding PedidoID}"
+Width="100"></DataGridTextColumn>
+                <DataGridTextColumn Header="ProdutoID" Binding="{Binding ProdutoID}"
+Width="100"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="Fechar pedido" Height="23" HorizontalAlignment="Left"
+Margin="103.69,5,0,0" Name="btnFecharPedido" VerticalAlignment="Top" Width="87"
+Click="btnFecharPedido_Click" Grid.Column="4" />
+        <Button Content="Calcular pedido" Height="23" HorizontalAlignment="Left"
+Margin="36,6,0,0" Name="btnCalcularPedido" VerticalAlignment="Top" Width="97"
+Click="btnCalcularPedido_Click" Grid.ColumnSpan="3" Grid.Column="1" />
+
+        <Separator Grid.Row="1" Height="4" HorizontalAlignment="Left" Margin="8,3,0,0"
+Name="separator2" VerticalAlignment="Top" Width="569" Grid.ColumnSpan="5" />
+        <Button Content="Abrir um pedido" Height="23" HorizontalAlignment="Left"
+Margin="14,7,0,0" Name="btnAbrirPedido" VerticalAlignment="Top" Width="115"
+Click="btnAbrirPedido_Click" />
+        <DatePicker Grid.Row="1" Height="25" HorizontalAlignment="Left"
+Margin="5,11,0,0" Name="datePicker1" VerticalAlignment="Top" Width="115" Grid.ColumnSpan="3" Grid.Column="2" />
+        <TextBlock Grid.Row="2" Height="23" HorizontalAlignment="Left"
+Margin="20,19,0,0" Name="textBlock1" Text="Preço:" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Column="2" />
+        <TextBox Grid.Row="2" Height="23" HorizontalAlignment="Left" Margin="26,18,0,0"
+Name="txtPrecoVenda" VerticalAlignment="Top" Width="120" Text="{Binding
+PrecoUnitario}" IsEnabled="False" Grid.Column="3" Grid.ColumnSpan="2" />
+        <ComboBox Grid.Row="1" Height="23" HorizontalAlignment="Left"
+Margin="80,46,0,0" Name="cboClientes" VerticalAlignment="Top" Width="120"
+DisplayMemberPath="Nome" IsEditable="True" IsReadOnly="True" />
+        <Button Content="Excluir item da lista" Grid.Row="2" Height="23"
+HorizontalAlignment="Left" Margin="76.69,47,0,0" Name="btnExcluirItem"
+VerticalAlignment="Top" Width="114" Click="btnExcluirItem_Click" Grid.Column="4" />
+    </Grid>
+</Window>
